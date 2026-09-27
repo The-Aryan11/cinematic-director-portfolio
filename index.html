@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-zinc-950 text-zinc-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aryan Ranjan — Cinematic Videographer & VFX Director</title>
+    <meta name="description" content="Dark Fantasy Cinematic Portfolio of Aryan Ranjan, Cinematic Videographer & VFX Director." />
+    <meta property="og:title" content="Aryan Ranjan — Cinematic Videographer & VFX Director" />
+    <meta property="og:description" content="Dark Fantasy Cinematic Portfolio of Aryan Ranjan, Cinematic Videographer & VFX Director." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              zinc: {
+                950: '#09090b',
+                900: '#121215',
+                850: '#18181c',
+              }
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
+              cinzel: ['"Cinzel"', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              'clash-flare': '0 0 50px rgba(168, 85, 247, 0.4)',
+              'clash-flare-lg': '0 0 80px rgba(168, 85, 247, 0.6), 0 0 30px rgba(236, 72, 153, 0.3)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- GSAP & ScrollTrigger (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+      /* Global resets and typography */
+      * {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #09090b;
+        color: #f4f4f5;
+        overflow-x: hidden;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      /* Subtle dark grain overlay */
+      .film-grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 99;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* 3D Showcase Card Styles */
+      .card-clash {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+      }
+
+      /* Blade extending slice */
+      .blade-track {
+        width: 52px;
+        background-image: url('blade-slice.png');
+        background-repeat: repeat-y;
+        background-size: 100% auto;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #09090b;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a855f7;
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-purple-900 selection:text-white">
+    <!-- Subtle Ambient Noise / Grain -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-12 py-3.5 sm:py-5 flex items-center justify-between backdrop-blur-md bg-zinc-950/60 border-b border-zinc-900/60">
+      <a href="#" class="font-serif tracking-[0.16em] sm:tracking-[0.2em] text-xs sm:text-sm md:text-base font-medium text-zinc-200 hover:text-white transition-colors">
+        ARYAN RANJAN
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs tracking-[0.2em] uppercase text-zinc-400">
+        <a href="#hero" class="hover:text-purple-400 transition-colors">Prologue</a>
+        <a href="#engine" class="hover:text-purple-400 transition-colors">The Blade</a>
+        <a href="#works" class="hover:text-purple-400 transition-colors">Archive</a>
+        <a href="#footer" class="hover:text-purple-400 transition-colors">Commission</a>
+      </nav>
+
+      <a href="#footer" class="text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] px-3 sm:px-4 py-1.5 sm:py-2 border border-zinc-800 rounded bg-zinc-900/80 text-zinc-300 hover:border-purple-500 hover:text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300">
+        Direct Inquiries
+      </a>
+    </header>
+
+    <!-- SECTION 1: HERO (relative, flex column) -->
+    <section id="hero" class="relative w-full min-h-screen flex flex-col items-center overflow-x-clip bg-zinc-950 pt-20 sm:pt-24 pb-0 select-none">
+      <!-- Ambient dark radial glow -->
+      <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_50%_30%,rgba(60,25,85,0.18),transparent_70%)]" aria-hidden="true"></div>
+
+      <!-- Top Half: Clean Centered Typography -->
+      <div class="relative z-30 text-center flex flex-col items-center justify-center px-4 sm:px-6 max-w-5xl mx-auto mb-4 sm:mb-6">
+        <p class="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.3em] sm:tracking-[0.45em] text-zinc-400 font-sans mb-3 sm:mb-4 opacity-90">
+          SELECTED DIRECTORIAL ARCHIVE · 2026
+        </p>
+
+        <h1 class="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-serif tracking-[0.12em] sm:tracking-[0.2em] uppercase text-zinc-100 font-normal leading-none drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
+          ARYAN RANJAN
+        </h1>
+
+        <h2 class="text-[11px] sm:text-sm md:text-base font-sans tracking-[0.24em] sm:tracking-[0.38em] text-zinc-400 uppercase mt-4 sm:mt-6 max-w-2xl font-light">
+          CINEMATIC VIDEOGRAPHER &amp; VFX DIRECTOR
+        </h2>
+
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6 text-[9px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.25em] uppercase text-zinc-500">
+          <span>DARK FANTASY CINEMATICS</span>
+          <span class="text-purple-500">·</span>
+          <span>UNREAL ENGINE 5</span>
+          <span class="text-purple-500">·</span>
+          <span>GEN AI PIPELINES</span>
+        </div>
+      </div>
+
+      <!-- Bottom Half: The Knight Holding the Sword Hilt & Attached Sword-Slice -->
+      <!-- CRITICAL: Stuck directly to the end of the anchor image with ZERO gap so both appear as a single continuous image -->
+      <div class="relative z-10 flex flex-col items-center pointer-events-none w-full">
+        <img 
+          src="anchor.png" 
+          class="knight-anchor block select-none" 
+          alt="The Knight Holding The Sword Hilt"
+          style="width: calc(52px * 1024 / 56); min-width: calc(52px * 1024 / 56); height: auto; display: block; margin: 0; padding: 0; vertical-align: bottom;"
+        />
+        <!-- The Sword-Slice stuck directly to the end of anchor.png with ZERO GAP -->
+        <div 
+          class="blade-track relative z-20"
+          style="width: 52px; height: 80px; margin-top: -1px; display: block;"
+        >
+          <!-- Subtle matching aura -->
+          <div class="absolute inset-0 w-full h-full pointer-events-none shadow-[0_0_20px_rgba(168,85,247,0.15)]"></div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <div class="absolute bottom-6 right-8 z-30 hidden lg:flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-zinc-500 pointer-events-none">
+        <span>SCROLL TO FORGE</span>
+        <span class="animate-bounce text-purple-400">↓</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE 3D SCROLL ENGINE (Pinned Showcase) -->
+    <section id="engine" class="relative w-full min-h-screen bg-zinc-950 overflow-hidden flex items-center justify-center">
+      <!-- Deep dark empty background -->
+      <div class="absolute inset-0 bg-zinc-950 pointer-events-none"></div>
+
+      <!-- The Extending Blade -->
+      <!-- Central div horizontally centered (left: 50%, z-index: 10, width: 52px). Height animates 0 to 100% via GSAP -->
+      <div 
+        id="sword-blade"
+        class="blade-track absolute top-0 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
+        style="width: 52px; height: 0%;"
+      >
+        <!-- The Sword Tip attached at the absolute bottom of this extending blade -->
+        <img 
+          src="tip.png" 
+          class="blade-tip absolute left-0 block" 
+          style="top: 100%; transform: translateY(-1px); width: 52px; height: 173px;" 
+          alt="Sword Tip"
+        />
+
+        <!-- Subtle Blade Energy Aura that travels with the blade edge -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none shadow-[0_0_20px_rgba(168,85,247,0.15)]"></div>
+      </div>
+
+      <!-- 3D Perspective Card Container -->
+      <div class="relative z-30 w-full h-screen max-w-6xl mx-auto flex items-center justify-center px-3 sm:px-4" style="perspective: 1200px;">
+
+        <!-- Card 1: Cinematic Showreels -->
+        <article 
+          id="card-1"
+          class="card-clash absolute w-[94vw] sm:w-[92vw] max-w-[640px] p-5 sm:p-8 md:p-11 rounded-xl border border-zinc-800 text-left cursor-default select-none"
+          style="background-color: #09090b; z-index: 40;"
+        >
+          <!-- Card Header / Meta -->
+          <div class="flex items-center justify-between border-b border-zinc-900 pb-3 sm:pb-4 mb-4 sm:mb-6 text-[10px] sm:text-xs">
+            <span class="uppercase tracking-[0.2em] sm:tracking-[0.3em] text-purple-400 font-medium">DISCIPLINE 01 // DIRECTION</span>
+            <span class="tracking-[0.15em] sm:tracking-[0.2em] text-zinc-500 uppercase">2024 — 2026 ARCHIVE</span>
+          </div>
+
+          <!-- Card Title -->
+          <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-zinc-100 font-normal tracking-wide mb-2 sm:mb-4">
+            Cinematic Showreels
+          </h3>
+
+          <!-- Card Description -->
+          <p class="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed font-light mb-4 sm:mb-6">
+            High-octane visual pacing, camera choreography, and dramatic chiaroscuro color grading crafted for dark fantasy narratives, period epics, and feature-film launch campaigns.
+          </p>
+
+          <!-- Specifications / Highlights -->
+          <div class="grid grid-cols-2 gap-2 sm:gap-4 py-3 sm:py-4 my-3 sm:my-4 border-y border-zinc-900 text-[11px] sm:text-xs">
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Optics &amp; Sensors</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Panavision Anamorphic · ARRI LF</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Color Grade</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">ACEScc · Custom Film Emulation</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Sound Design</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Dolby Atmos Spatial Sync</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Master Output</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">4K DCI Flat · 2.39:1 Aspect</p>
+            </div>
+          </div>
+
+          <!-- Card Footer Action -->
+          <div class="flex items-center justify-between pt-1 sm:pt-2">
+            <span class="text-[10px] sm:text-xs text-zinc-500 tracking-wider">FEATURED REEL · 03:42</span>
+            <button class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded bg-zinc-900 border border-zinc-700 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-zinc-200 hover:border-purple-400 hover:text-white hover:bg-purple-950/40 transition-all duration-300">
+              Launch Reel
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2: Interactive Game Cinematics -->
+        <article 
+          id="card-2"
+          class="card-clash absolute w-[94vw] sm:w-[92vw] max-w-[640px] p-5 sm:p-8 md:p-11 rounded-xl border border-zinc-800 text-left cursor-default select-none"
+          style="background-color: #09090b; z-index: 40;"
+        >
+          <!-- Card Header / Meta -->
+          <div class="flex items-center justify-between border-b border-zinc-900 pb-3 sm:pb-4 mb-4 sm:mb-6 text-[10px] sm:text-xs">
+            <span class="uppercase tracking-[0.2em] sm:tracking-[0.3em] text-purple-400 font-medium">DISCIPLINE 02 // REAL-TIME ENGINES</span>
+            <span class="tracking-[0.15em] sm:tracking-[0.2em] text-zinc-500 uppercase">UNREAL ENGINE 5.4</span>
+          </div>
+
+          <!-- Card Title -->
+          <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-zinc-100 font-normal tracking-wide mb-2 sm:mb-4">
+            Interactive Game Cinematics
+          </h3>
+
+          <!-- Card Description highlighting Introduction to Video Games Creation and engine integration -->
+          <p class="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed font-light mb-4 sm:mb-6">
+            Introduction to Video Games Creation and seamless real-time engine integration. Directing custom in-engine virtual camera rigs, Lumen dynamic global illumination, and procedural Niagara volumetric simulations for high-immersion player narratives.
+          </p>
+
+          <!-- Specifications / Highlights -->
+          <div class="grid grid-cols-2 gap-2 sm:gap-4 py-3 sm:py-4 my-3 sm:my-4 border-y border-zinc-900 text-[11px] sm:text-xs">
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Engine Core</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">UE 5.4 Lumen &amp; Nanite Mesh</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Motion Capture</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Optical MoCap &amp; Live Link Facial</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Particle FX</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">GPU Niagara Fluid Solvers</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Seamless Transitions</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Zero-Cut Cutscene to Gameplay</p>
+            </div>
+          </div>
+
+          <!-- Card Footer Action -->
+          <div class="flex items-center justify-between pt-1 sm:pt-2">
+            <span class="text-[10px] sm:text-xs text-zinc-500 tracking-wider">PROJECT: ASHES OF ASGARD</span>
+            <button class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded bg-zinc-900 border border-zinc-700 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-zinc-200 hover:border-purple-400 hover:text-white hover:bg-purple-950/40 transition-all duration-300">
+              Engine Breakdown
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3: AI-Driven VFX -->
+        <article 
+          id="card-3"
+          class="card-clash absolute w-[94vw] sm:w-[92vw] max-w-[640px] p-5 sm:p-8 md:p-11 rounded-xl border border-zinc-800 text-left cursor-default select-none"
+          style="background-color: #09090b; z-index: 40;"
+        >
+          <!-- Card Header / Meta -->
+          <div class="flex items-center justify-between border-b border-zinc-900 pb-3 sm:pb-4 mb-4 sm:mb-6 text-[10px] sm:text-xs">
+            <span class="uppercase tracking-[0.2em] sm:tracking-[0.3em] text-purple-400 font-medium">DISCIPLINE 03 // NEXT-GEN PIPELINES</span>
+            <span class="tracking-[0.15em] sm:tracking-[0.2em] text-zinc-500 uppercase">NEURAL COMPOSITING</span>
+          </div>
+
+          <!-- Card Title -->
+          <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-zinc-100 font-normal tracking-wide mb-2 sm:mb-4">
+            AI-Driven VFX
+          </h3>
+
+          <!-- Card Description highlighting Gen AI pipeline mastery -->
+          <p class="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed font-light mb-4 sm:mb-6">
+            Gen AI pipeline mastery bridging generative diffusion models, neural radiance fields (NeRFs), and traditional 32-bit floating point Nuke compositing for photorealistic dark fantasy world-building.
+          </p>
+
+          <!-- Specifications / Highlights -->
+          <div class="grid grid-cols-2 gap-2 sm:gap-4 py-3 sm:py-4 my-3 sm:my-4 border-y border-zinc-900 text-[11px] sm:text-xs">
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Spatial Generation</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">3D Gaussian Splatting &amp; NeRF</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Rotoscoping</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Segment-Anything Neural Roto</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Upscaling</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Temporal Latent Coherence 8K</p>
+            </div>
+            <div>
+              <p class="text-zinc-500 uppercase tracking-widest text-[9px] sm:text-[10px] mb-0.5 sm:mb-1">Compositing</p>
+              <p class="text-zinc-300 font-medium text-[11px] sm:text-xs">Nuke 15 Multi-Pass Integration</p>
+            </div>
+          </div>
+
+          <!-- Card Footer Action -->
+          <div class="flex items-center justify-between pt-1 sm:pt-2">
+            <span class="text-[10px] sm:text-xs text-zinc-500 tracking-wider">PIPELINE DOSSIER · v4.2</span>
+            <button class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded bg-zinc-900 border border-zinc-700 text-[10px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-zinc-200 hover:border-purple-400 hover:text-white hover:bg-purple-950/40 transition-all duration-300">
+              View AI VFX Case
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: FOOTER ("Commission The Vision") -->
+    <footer id="footer" class="relative w-full bg-zinc-950 text-zinc-100 overflow-hidden pt-12 sm:pt-16 pb-16 sm:pb-24 border-t border-zinc-900">
+      
+      <!-- Top Title of Section 3 -->
+      <div class="text-center pt-6 sm:pt-8 pb-8 sm:pb-12 px-4 sm:px-6">
+        <p class="text-[10px] sm:text-xs uppercase tracking-[0.28em] sm:tracking-[0.35em] text-zinc-500 font-sans mb-2 sm:mb-3">FINAL TRANSMISSION</p>
+        <h2 class="text-3xl sm:text-5xl md:text-7xl font-serif text-zinc-100 tracking-wider uppercase font-light">
+          Commission The Vision
+        </h2>
+      </div>
+
+      <!-- Central Extended Blade in the Footer -->
+      <!-- The blade continues extending straight down the center until the sharp point of tip.png rests in the 80px gap -->
+      <div class="relative w-full flex flex-col items-center">
+        
+        <!-- The Footer Extending Blade Track -->
+        <div 
+          id="footer-blade"
+          class="blade-track absolute top-0 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+          style="width: 52px; height: 0px;"
+        >
+          <!-- Blade Tip that terminates in the dead center of the 80px gap -->
+          <img 
+            id="footer-tip"
+            src="tip.png" 
+            class="blade-tip absolute left-0 block" 
+            style="top: 100%; transform: translateY(-1px); width: 52px; height: 173px;" 
+            alt="Sword Tip"
+          />
+
+          <!-- Termination Impact Glow Aura -->
+          <div 
+            id="termination-glow" 
+            class="absolute left-1/2 -translate-x-1/2 w-28 h-28 rounded-full pointer-events-none opacity-0 transition-opacity duration-500"
+            style="top: calc(100% + 140px); background: radial-gradient(circle, rgba(168,85,247,0.7) 0%, rgba(168,85,247,0.2) 40%, transparent 70%); filter: blur(6px);"
+          ></div>
+        </div>
+
+        <!-- 2-Column Grid Layout with Exact 80px Empty Gap -->
+        <div id="footer-columns-container" class="relative w-full max-w-5xl mx-auto px-3 sm:px-6 pt-10 sm:pt-16 pb-12 sm:pb-20 flex items-center justify-center z-10">
+          
+          <!-- Left Column: Right-Aligned Text -->
+          <div class="flex-1 text-right pr-2 sm:pr-4 select-none">
+            <p class="text-[9px] sm:text-xs tracking-[0.22em] sm:tracking-[0.3em] text-zinc-500 uppercase mb-1 sm:mb-2">DISCIPLINE</p>
+            <h3 class="text-base sm:text-2xl md:text-4xl font-serif text-zinc-200 font-normal leading-snug">
+              Directing &amp; Senior VFX
+            </h3>
+            <p class="text-[10px] sm:text-xs text-zinc-500 mt-1 sm:mt-2 tracking-wide font-light hidden sm:block">
+              Feature Films · Teasers · Real-Time Interactive Engines
+            </p>
+          </div>
+
+          <!-- Central Corridor: Strictly 80px Gap -->
+          <!-- The blade extension must end so the sharp point of tip.png rests perfectly in the dead center of this 80px gap -->
+          <div id="central-blade-target" class="w-[80px] shrink-0 h-40 relative flex items-center justify-center pointer-events-none" style="width: 80px;">
+            <!-- Target crosshair marker for visual reference (subtle and elegant) -->
+            <div class="w-1.5 h-1.5 rounded-full bg-purple-500/30"></div>
+          </div>
+
+          <!-- Right Column: Left-Aligned Text -->
+          <div class="flex-1 text-left pl-2 sm:pl-4 select-none">
+            <p class="text-[9px] sm:text-xs tracking-[0.22em] sm:tracking-[0.3em] text-zinc-500 uppercase mb-1 sm:mb-2">REPRESENTATION</p>
+            <h3 class="text-base sm:text-2xl md:text-4xl font-serif text-zinc-200 font-normal leading-snug">
+              Available Globally
+            </h3>
+            <p class="text-[10px] sm:text-xs text-zinc-500 mt-1 sm:mt-2 tracking-wide font-light hidden sm:block">
+              Remote Directing · On-Set Supervision · London &amp; Los Angeles
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Action & Commission Contact Box -->
+      <div class="max-w-xl mx-auto text-center px-4 sm:px-6 mt-8 sm:mt-12 relative z-30">
+        <a 
+          href="mailto:contact@aryanranjan.studio" 
+          class="inline-block px-6 sm:px-8 py-3.5 sm:py-4 bg-zinc-900 border border-zinc-700 hover:border-purple-500 text-zinc-100 hover:text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[11px] sm:text-xs font-medium rounded transition-all duration-300 hover:shadow-[0_0_30px_rgba(168,85,247,0.35)]"
+        >
+          Initiate Direct Commission
+        </a>
+        <p class="text-[10px] sm:text-xs text-zinc-500 tracking-widest mt-3 sm:mt-4 uppercase">
+          contact@aryanranjan.studio · response within 24h
+        </p>
+
+        <!-- Social / Industry Platforms -->
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8 text-[11px] sm:text-xs tracking-widest uppercase text-zinc-400">
+          <a href="#" class="hover:text-purple-400 transition-colors">Vimeo Pro</a>
+          <span class="text-zinc-700">·</span>
+          <a href="#" class="hover:text-purple-400 transition-colors">ArtStation</a>
+          <span class="text-zinc-700">·</span>
+          <a href="#" class="hover:text-purple-400 transition-colors">IMDb</a>
+          <span class="text-zinc-700">·</span>
+          <a href="#" class="hover:text-purple-400 transition-colors">LinkedIn</a>
+        </div>
+
+        <p class="text-[10px] sm:text-[11px] text-zinc-600 tracking-widest mt-8 sm:mt-12 uppercase">
+          © 2026 ARYAN RANJAN. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+
+    </footer>
+
+    <!-- GSAP Master Animation Controller -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* =========================================================================
+           SECTION 2: 3D SCROLL ENGINE (Pinned Showcase)
+           - Pinned container (scrub: 1, pin: true)
+           - Blade height animates 0% -> 100%
+           - 3 Cards with Twist & Roll GSAP Logic:
+             * Enter: x: 50vw, rotateY: -60deg, scale: 0.75, opacity: 0, z-index: 10
+             * Center (Impact): x: 0, rotateY: 0deg, scale: 1, opacity: 1, z-index: 40
+               Trigger purple flare (box-shadow: 0 0 50px rgba(168, 85, 247, 0.4))
+             * Exit: x: -50vw, rotateY: 60deg, scale: 0.75, opacity: 0, z-index: 10
+             * Overlapping timelines for seamless sequence
+        ========================================================================= */
+
+        const engineSection = document.getElementById('engine');
+        const blade = document.getElementById('sword-blade');
+        const card1 = document.getElementById('card-1');
+        const card2 = document.getElementById('card-2');
+        const card3 = document.getElementById('card-3');
+
+        // Master pinned timeline for Section 2
+        const showcaseTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: engineSection,
+            start: 'top top',
+            end: '+=2400', // Natural, responsive scroll pacing without dead empty space
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1
+          }
+        });
+
+        // 1. Blade extension from 0% to 100% across the full timeline duration
+        showcaseTl.fromTo(blade, 
+          { height: '0%' }, 
+          { height: '100%', ease: 'none', duration: 3.4 }, 
+          0
+        );
+
+        // Function to build the Card Scroll & Clash cycle
+        // Cards ALWAYS appear and move IN FRONT of the sword (zIndex >= 40)
+        function animateCard(card, enterStart, centerStay, exitEnd, cardBaseZ = 40) {
+          const activeZ = cardBaseZ + 5;
+
+          // Initial state: starts to the right, rotated, in front of the sword
+          gsap.set(card, {
+            x: '55vw',
+            rotateY: -30,
+            scale: 0.85,
+            opacity: 0,
+            zIndex: cardBaseZ,
+            boxShadow: '0 0 0px rgba(168, 85, 247, 0)',
+            borderColor: '#27272a'
+          });
+
+          const centerEnterTime = enterStart + 0.35;
+          const centerExitTime = centerStay;
+
+          // Enter: moves forward to center IN FRONT of the sword
+          showcaseTl.to(card, {
+            x: 0,
+            rotateY: 0,
+            scale: 1,
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.35,
+            onStart: () => {
+              card.style.zIndex = `${activeZ}`;
+            }
+          }, enterStart);
+
+          // Impact: Flare trigger at exact center
+          showcaseTl.to(card, {
+            boxShadow: '0 0 60px rgba(168, 85, 247, 0.5), 0 0 25px rgba(168, 85, 247, 0.3)',
+            borderColor: '#a855f7',
+            duration: 0.2,
+            ease: 'power1.out'
+          }, centerEnterTime - 0.1);
+
+          // Hold at center / subtle pulse
+          showcaseTl.to(card, {
+            boxShadow: '0 0 45px rgba(168, 85, 247, 0.35)',
+            duration: centerExitTime - centerEnterTime,
+            ease: 'none'
+          }, centerEnterTime + 0.1);
+
+          // Exit: moves to left (-55vw), staying completely IN FRONT of the sword
+          showcaseTl.to(card, {
+            x: '-55vw',
+            rotateY: 30,
+            scale: 0.85,
+            opacity: 0,
+            boxShadow: '0 0 0px rgba(168, 85, 247, 0)',
+            borderColor: '#27272a',
+            ease: 'power2.in',
+            duration: exitEnd - centerExitTime,
+            onComplete: () => {
+              card.style.zIndex = `${cardBaseZ}`;
+            }
+          }, centerExitTime);
+        }
+
+        // Card 1: Enters immediately at 0.0 with the blade, hits center at 0.35, stays to 0.8, exits by 1.2
+        animateCard(card1, 0.0, 0.8, 1.2, 40);
+
+        // Card 2: Starts entering at 0.95 as Card 1 exits, hits center at 1.3, stays to 1.75, exits by 2.15
+        animateCard(card2, 0.95, 1.75, 2.15, 42);
+
+        // Card 3: Starts entering at 1.9 as Card 2 exits, hits center at 2.25, stays to 2.75, exits by 3.2
+        animateCard(card3, 1.9, 2.75, 3.2, 44);
+
+
+        /* =========================================================================
+           SECTION 3: FOOTER ("Commission The Vision")
+           - Blade continues extending straight down the center
+           - Ends so the sharp point of tip.png rests perfectly in the dead center
+             of the 80px gap between the two text columns
+        ========================================================================= */
+
+        const footerSection = document.getElementById('footer');
+        const footerBlade = document.getElementById('footer-blade');
+        const footerTip = document.getElementById('footer-tip');
+        const centralBladeTarget = document.getElementById('central-blade-target');
+        const terminationGlow = document.getElementById('termination-glow');
+
+        function calculateTerminationHeight() {
+          // Find the exact vertical center of the central 80px target gap
+          const footerRect = footerSection.getBoundingClientRect();
+          const targetRect = centralBladeTarget.getBoundingClientRect();
+          const targetCenterY = (targetRect.top - footerRect.top) + (targetRect.height / 2);
+
+          // tip.png is 173px high. The tip point is at y=170px of tip.
+          // tip.png is attached to top: 100% (the bottom edge of footerBlade).
+          // Therefore, when footerBlade height is H:
+          // The bottom tip point is at H + 170px from top of footerBlade.
+          // We want H + 170px = targetCenterY  =>  H = targetCenterY - 170px
+          const targetBladeHeight = Math.max(20, targetCenterY - 170);
+          return targetBladeHeight;
+        }
+
+        // Initialize footer blade animation
+        let targetH = calculateTerminationHeight();
+
+        // Footer blade ScrollTrigger
+        const footerTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: footerSection,
+            start: 'top 70%',
+            end: 'top 15%',
+            scrub: 1,
+            onUpdate: (self) => {
+              if (self.progress > 0.85) {
+                terminationGlow.style.opacity = '1';
+              } else {
+                terminationGlow.style.opacity = '0';
+              }
+            }
+          }
+        });
+
+        footerTl.fromTo(footerBlade, 
+          { height: 0 },
+          { 
+            height: () => calculateTerminationHeight(), 
+            ease: 'power2.out',
+            duration: 1.5 
+          }
+        );
+
+        // Handle window resize dynamically to ensure exact pixel-perfect termination
+        window.addEventListener('resize', () => {
+          ScrollTrigger.refresh();
+        });
+      });
+    </script>
+  </body>
+</html>
